@@ -9,11 +9,12 @@ var factorial = function(n) {
     if (n < 0) {
     return null 
     }
-    if (n===0) {
+    else if (n===0) {
       return 1;
     }
-    //use
+    else{
     return n * factorial(n - 1)
+  }
 };
 
 // 2. Compute the sum of an array of integers.
@@ -36,19 +37,72 @@ var arraySum = function(array) {
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+  if(n >= 0){
+    if (n === 0) {
+      return true;
+    } 
+    else if (n === 1) {
+      return false;
+    } 
+    else {
+      return isEven(n-2)
+    }
+}
+  else if(n <= 0){
+    if (n === 0) {
+      return true;
+    } 
+    else if (n === -1) {
+      return false;
+    } 
+    else {
+      return isEven(n+2)
+    }
+  }
+
 };
 
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
+var sumForSumBelow = 0
 var sumBelow = function(n) {
+  if(n === 0){
+    return sumForSumBelow + 0;
+  }
+  if(n > 0){
+    return sumForSumBelow + (n-1) + sumBelow(n - 1)
+  }
+  else if (n < 0) {
+    return sumForSumBelow + (n+1) + sumBelow(n + 1)
+  }
 };
 
 // 6. Get the integers in range (x, y).
 // Example:  range(2, 9);  // [3, 4, 5, 6, 7, 8]
-var range = function(x, y) {
-};
 
+var range = function(x, y) {
+if (x > y){
+var newArray = []
+  if(x === y || x === y+1){
+    return newArray
+  }
+  else {
+    newArray.push(x - 1)
+    return newArray.concat(range(x - 1, y))
+  }
+}
+else{
+var newArray = []
+  if(x === y || x === y-1){
+    return newArray
+  }
+  else {
+    newArray.push(x + 1)
+    return newArray.concat(range(x + 1, y))
+  }
+}
+};
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
 // 8^2 = 8 x 8 = 64.  Here, 8 is the base and 2 is the exponent.
